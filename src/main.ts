@@ -40,6 +40,9 @@ function initWebGL(canvas: HTMLCanvasElement) {
   }
 
   // set up viewport
+  const { clientWidth, clientHeight } = canvas;
+  canvas.width = clientWidth;
+  canvas.height = clientHeight;
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
   gl.clearColor(0, 0, 0, 0);
   gl.clear(gl.COLOR_BUFFER_BIT);
@@ -47,9 +50,9 @@ function initWebGL(canvas: HTMLCanvasElement) {
 
   {
     // set resolution uniform
-    const { width, height } = canvas.getBoundingClientRect();
+
     const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
-    gl.uniform3fv(resolutionLocation, [width, height, 1]);
+    gl.uniform3fv(resolutionLocation, [clientWidth, clientHeight, 1]);
   }
 
   // which buffers to use
