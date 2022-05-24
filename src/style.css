@@ -22,3 +22,12 @@ canvas#c{
   width: 100%;
   display:block;
 }
+
+.intro-txt-container {
+  position: absolute;
+  inset: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

@@ -2,6 +2,7 @@ import "./style.css";
 import vertSrc from "./shaders/simple.vert?raw";
 import fragSrc from "./shaders/simple.frag?raw";
 import { initializeWebGLGroup } from "./webgl-helpers";
+import { createIntroText } from "./introText";
 
 const c = document.querySelector<HTMLCanvasElement>("#c");
 
@@ -69,6 +70,7 @@ function initWebGL(canvas: HTMLCanvasElement) {
 
 if (c) {
   initWebGL(c);
+  document.querySelector("#app")?.appendChild(createIntroText());
 } else {
   console.error("Could not find canvas for webGL context!");
 }
