@@ -15,7 +15,7 @@ function initWebGL(canvas: HTMLCanvasElement) {
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
   // now that the buffer is bound, I can send data to it
-  const positions = [-1, -1, -1, 1, 1, 1];
+  const positions = [-1, -1, -1, 1, 1, 1, 1, 1, -1, -1, 1, -1];
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
   // now need to specify how to get that data OUT of buffer
@@ -59,7 +59,7 @@ function initWebGL(canvas: HTMLCanvasElement) {
   {
     const primitiveType = gl.TRIANGLES;
     const offset = 0;
-    const count = 3;
+    const count = 6;
     gl.drawArrays(primitiveType, offset, count);
   }
 }

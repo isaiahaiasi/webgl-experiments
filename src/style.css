@@ -6,3 +6,19 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+}
+
+canvas#c{
+  height: 100%;
+  width: 100%;
+  display:block;
+}
