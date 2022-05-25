@@ -1,3 +1,6 @@
+// Many of these functions are taken from or based upon examples found at:
+// https://webgl2fundamentals.org
+
 interface WebGLContextGroup {
   canvas: HTMLCanvasElement;
   gl: WebGL2RenderingContext;

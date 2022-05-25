@@ -1,4 +1,4 @@
-import { createElement } from "./domUtilities";
+import { createElement } from "./domUtils";
 
 export function createCanvasStats(canvas: HTMLCanvasElement) {
   // create elements
@@ -26,9 +26,10 @@ export function createCanvasStats(canvas: HTMLCanvasElement) {
         statElm.textContent = `${k}: ${v.toString()}`;
       }
     });
+    requestAnimationFrame(updateTextContent);
   }
 
-  updateTextContent();
+  requestAnimationFrame(updateTextContent);
 
   return canvasStatsContainer;
 }
