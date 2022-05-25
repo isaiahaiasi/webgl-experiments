@@ -3,6 +3,7 @@ import vertSrc from "./shaders/simple.vert?raw";
 import fragSrc from "./shaders/simple.frag?raw";
 import { initializeWebGLGroup } from "./webgl-helpers";
 import { createIntroText } from "./introText";
+import { createCanvasStats } from "./canvasStats";
 
 const c = document.querySelector<HTMLCanvasElement>("#c");
 
@@ -44,16 +45,15 @@ function initWebGL(canvas: HTMLCanvasElement) {
   const { clientWidth, clientHeight } = canvas;
   canvas.width = clientWidth;
   canvas.height = clientHeight;
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+  gl.viewport(0, 0, canvas.width, canvas.height);
   gl.clearColor(0, 0, 0, 0);
   gl.clear(gl.COLOR_BUFFER_BIT);
   gl.useProgram(program);
 
   {
     // set resolution uniform
-
     const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
-    gl.uniform3fv(resolutionLocation, [clientWidth, clientHeight, 1]);
+    gl.uniform3fv(resolutionLocation, [canvas.width, canvas.height, 1]);
   }
 
   // which buffers to use
@@ -70,7 +70,9 @@ function initWebGL(canvas: HTMLCanvasElement) {
 
 if (c) {
   initWebGL(c);
-  document.querySelector("#app")?.appendChild(createIntroText());
+  const app = document.querySelector("#app");
+  app?.appendChild(createIntroText());
+  app?.appendChild(createCanvasStats(c));
 } else {
   console.error("Could not find canvas for webGL context!");
 }
